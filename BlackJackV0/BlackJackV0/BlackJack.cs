@@ -4,31 +4,48 @@
 /// </summary>
 namespace JAMK.IT
 {
-  class BlackJack
-  {
-    static void Main()
+    class BlackJack
     {
-      int myNumber = 17;
-      int theirNumber;
-      System.Console.WriteLine("*** BlackJack! ***");
-      System.Console.Write("Can you beat my number? Enter any number between 1-21: ");
-      //reading and converting 
-      theirNumber = System.Convert.ToInt32(System.Console.ReadLine());
-      //comparing that given umber is valid
-      if (theirNumber < 1 || theirNumber > 21)
-      {
-        Console.WriteLine("The given number is out of limits, try again.");
-      }
-      else {
-        //comparing
-        if (theirNumber >= myNumber && theirNumber <= 21)
+
+        static void Main()
         {
-          System.Console.WriteLine("You win.");
+            while(true)
+                { 
+            Random rnd = new Random();
+            int myNumber = rnd.Next(1, 22);
+            int theirNumber;
+            
+            
+                out1:
+                System.Console.WriteLine("*** BlackJack! ***");
+                System.Console.Write("Can you beat my number? Enter any number between 1-21: ");
+
+            string line = System.Console.ReadLine();
+
+            if (line == "exit") 
+            {
+                break;
+            }
+               
+            if (int.TryParse(line, out  < 1 || theirNumber > 21)
+                {
+                    Console.WriteLine("The given number is out of limits, try again.");
+                    goto out1;
+                }
+                else
+                {
+
+                    //comparing
+                    if (theirNumber >= myNumber && theirNumber <= 21)
+                    {
+                        System.Console.WriteLine("You win.");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("You lose.");
+                    }
+                }
+            }
         }
-        else {
-          System.Console.WriteLine("You lose.");
-        }
-      }
     }
-  }
 }
